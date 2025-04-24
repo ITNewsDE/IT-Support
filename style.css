@@ -1,0 +1,148 @@
+/* Hintergrundbild */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('bg3.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #aaffaa; /* weiches Grün */
+}
+
+/* Transparente Box für Header und Inhalt */
+main, header {
+    background-color: rgba(0, 0, 0, 0.6);
+    margin: 80px auto 20px; /* weiter nach unten */
+    padding: 30px;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Überschriften */
+h1, h2 {
+    color: #aaffaa; /* grün */
+    text-shadow: 0 0 8px #55aa55;
+    text-align: center;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.nav-buttons button {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 12px 28px;
+    margin: 0 10px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.nav-buttons button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
+}
+
+
+ul li {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+
+a {
+    color: #cccccc; /* hellgrau */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #ffffff; /* heller beim drüberfahren */
+    text-decoration: underline;
+}
+
+
+/* Gesamter Hintergrund */
+body {
+    background: url('bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    color: #cfcfcf;
+    margin: 0;
+    padding: 0;
+}
+
+/* Formular-Bereich */
+.ticket-form {
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 80px auto;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.ticket-form h2 {
+    color: #cfcfcf;
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Eingabefelder */
+.ticket-form input,
+.ticket-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #222;
+    color: #ccc;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.ticket-form input::placeholder,
+.ticket-form textarea::placeholder {
+    color: #777;
+}
+
+/* Button */
+.ticket-form button {
+    background-color: #444;
+    color: #ddd;
+    border: 1px solid #666;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.ticket-form button:hover {
+    background-color: #666;
+    color: #fff;
+}
+
+/* Statusmeldung */
+#statusMsg {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Für kleinere Bildschirme */
+@media (max-width: 768px) {
+    .ticket-form {
+        margin: 40px 20px;
+        padding: 20px;
+    }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="logo">
+            <h1>Ticket System</h1>
+        </div>
+        <nav class="nav-buttons">
+            <button onclick="location.href='index.html'">Home</button>
+            <button onclick="location.href='preisliste.html'">Preisliste</button>
+            <button onclick="location.href='kontakt.html'">Kontakt</button>
+            <button onclick="location.href='ticket.html'">Ticket erstellen</button> <!-- NEU -->
+        </nav>
+    </header>
+
+    <!-- Ticket-Formular -->
+    <main>
+        <section class="ticket-form">
+            <h2>Support-Ticket erstellen</h2>
+            <form id="ticketForm">
+                <input type="text" name="name" placeholder="Dein Name" required><br>
+                <input type="email" name="email" placeholder="Deine E-Mail" required><br>
+                <input type="text" name="problem" placeholder="Betreff/Problem" required><br>
+                <textarea name="details" placeholder="Details zum Problem" required></textarea><br>
+                <button type="submit">Ticket senden</button>
+            </form>
+            <p id="statusMsg"></p>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById("ticketForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const name = form.name.value;
+            const email = form.email.value;
+            const problem = form.problem.value;
+            const details = form.details.value;
+
+            // Deine Webhook-URL
+            const webhookURL = "https://discord.com/api/webhooks/1365023395892301855/-7NyQjuLbohD_ZTSnswgeboOjow3CydmOrL98dKXSSYQ7RkA-hTdgdmcl6I7uAAknRK2";
+
+            const payload = {
+                content: `**Neues Support-Ticket**\n\n` +
+                         `**Name:** ${name}\n` +
+                         `**Email:** ${email}\n\n` +
+                         `**Problem:** ${problem}\n\n` +
+                         `**Details:**\n\`\`\`\n${details}\n\`\`\`\n` +  // Codeblock für Details
+                         `────────────────────────────────────────────\n` + // Trennlinie
+                         `🎟️ **Ticket erstellt am:** ${new Date().toLocaleString()}`
+            };
+
+            fetch(webhookURL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(res => {
+                if (res.ok) {
+                    document.getElementById("statusMsg").textContent = "✅ Ticket wurde gesendet!";
+                    form.reset();
+                } else {
+                    document.getElementById("statusMsg").textContent = "❌ Fehler beim Senden!";
+                }
+            })
+            .catch(err => {
+                document.getElementById("statusMsg").textContent = "❌ Netzwerkfehler!";
+            });
+        });
+    </script>
+</body>
+</html>
